@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:viewmodels="clr-namespace:APP.PageModels"
+             x:Class="APP.Pages.RegisterPage"
+             x:DataType="viewmodels:RegisterPageModel"
+             Title="Daftar Akun Baru"
+             Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+             SizeChanged="OnPageSizeChanged">
+
+    <ScrollView>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+
+            <Border x:Name="mainCard"
+                    StrokeThickness="1" 
+                    Stroke="{AppThemeBinding Light=#E0E0E0, Dark=#2C2C2C}"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="40"
+                    WidthRequest="900"
+                    HeightRequest="540"
+                    BackgroundColor="{AppThemeBinding Light=#F9F9F9, Dark=#121212}">
+
+                <Grid ColumnDefinitions="1.2*, 1*" ColumnSpacing="40" VerticalOptions="Center">
+
+                    <VerticalStackLayout Grid.Column="0" Spacing="15" VerticalOptions="Center">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Pendaftaran Baru" FontSize="26" FontAttributes="Bold" />
+                            <Label Text="Silakan isi kredensial untuk mendaftarkan akun Anda." FontSize="13" TextColor="Gray" />
+                        </VerticalStackLayout>
+
+                        <Border StrokeThickness="1" Stroke="Gray" StrokeShape="RoundRectangle 10" Padding="15" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+                            <VerticalStackLayout Spacing="10">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Username" FontSize="12" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding Username}" Placeholder="Masukkan username..." HeightRequest="46" VerticalOptions="Center"/>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Password" FontSize="12" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Masukkan password..." HeightRequest="46" VerticalOptions="Center"/>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Konfirmasi Password" FontSize="12" FontAttributes="Bold"/>
+                                    <Entry Text="{Binding ConfirmPassword}" IsPassword="True" Placeholder="Ulangi password..." HeightRequest="46" VerticalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Button Text="Daftar Sekarang" Clicked="OnRegisterClicked" IsEnabled="{Binding IsNotBusy}" HeightRequest="45" CornerRadius="10" BackgroundColor="#2196F3" TextColor="White" FontSize="14" FontAttributes="Bold" />
+
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                            <Label Text="Sudah memiliki akun?" FontSize="13" VerticalOptions="Center"/>
+                            <Button Text="Login di sini" Clicked="OnGoToLoginClicked" TextColor="#2196F3" BackgroundColor="Transparent" FontSize="13" FontAttributes="Bold" Padding="0" HeightRequest="30" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="15" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="Verifikasi Kamera Wajah" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                        <Border StrokeThickness="2" Stroke="Gray" StrokeShape="RoundRectangle 15" WidthRequest="320" HeightRequest="180">
+                            <Grid>
+                                <cv:CameraView x:Name="cameraView" WidthRequest="320" HeightRequest="180" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center" Color="Blue" HeightRequest="50" WidthRequest="50" />
+                            </Grid>
+                        </Border>
+
+                        <Label Text="{Binding StatusMessage}" TextColor="{Binding StatusColor}" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>

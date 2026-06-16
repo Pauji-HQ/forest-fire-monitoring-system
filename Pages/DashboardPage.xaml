@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:viewmodels="clr-namespace:APP.PageModels"
+             x:DataType="viewmodels:DashboardPageModel"
+             x:Class="APP.Pages.DashboardPage"
+             Title="Dashboard Pemantauan &amp; Analitik Karhutla"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+             SizeChanged="OnPageSizeChanged">
+
+	<Grid ColumnDefinitions="*, *" ColumnSpacing="20" Padding="15">
+
+		<ScrollView Grid.Column="0">
+			<VerticalStackLayout Spacing="15" Padding="5">
+
+				<Border x:Name="statusBarBorder" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="15" BackgroundColor="{Binding StatusBgColor}">
+					<Label x:Name="statusLabel"
+                           Text="{Binding StatusMessage}"
+                           TextColor="White"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Border>
+
+				<Border x:Name="cameraBorder"
+                        StrokeThickness="3"
+                        Stroke="Gray"
+                        StrokeShape="RoundRectangle 15"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="320">
+					<Grid>
+						<cv:CameraView x:Name="cameraView" HorizontalOptions="Fill" VerticalOptions="Fill" />
+					</Grid>
+				</Border>
+
+				<Border StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="15" BackgroundColor="{AppThemeBinding Light=#F4F4F4, Dark=#1E1E1E}">
+					<VerticalStackLayout Spacing="10">
+						<Grid ColumnDefinitions="*, Auto">
+							<Label Grid.Column="0" Text="Simulasi Kecepatan Angin Real-Time" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+							<Label Grid.Column="1" Text="{Binding WindSpeed, StringFormat='{0:F1} km/jam'}" FontAttributes="Bold" FontSize="14" TextColor="#FF9800" VerticalOptions="Center"/>
+						</Grid>
+						<Slider Minimum="0" Maximum="100" Value="{Binding WindSpeed}" MinimumTrackColor="#FF9800" MaximumTrackColor="LightGray" ThumbColor="#FF9800"/>
+					</VerticalStackLayout>
+				</Border>
+
+				<Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+					<Button x:Name="resetButton" Grid.Column="0" Text="Reset Alarm" Command="{Binding ResetAlarmCommand}" IsVisible="{Binding IsAlarmActive}" BackgroundColor="#FF9800" TextColor="White" FontAttributes="Bold" HeightRequest="45" CornerRadius="8"/>
+					<Button x:Name="logoutButton" Grid.Column="1" Text="Keluar Aplikasi" Clicked="OnLogoutClicked" BackgroundColor="#E91E63" TextColor="White" FontAttributes="Bold" HeightRequest="45" CornerRadius="8"/>
+				</Grid>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+		<ScrollView Grid.Column="1">
+			<VerticalStackLayout Spacing="15" Padding="5">
+
+				<Border StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="15" BackgroundColor="{AppThemeBinding Light=#EBF3FE, Dark=#15202B}">
+					<VerticalStackLayout Spacing="10">
+						<Label Text="HASIL DIAGNOSTIK DETEKSI" FontAttributes="Bold" FontSize="16" TextColor="#2196F3"/>
+
+						<Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" RowSpacing="15" ColumnSpacing="20">
+							<VerticalStackLayout Grid.Row="0" Grid.Column="0">
+								<Label Text="Luas Area Api (YOLO)" FontSize="12" TextColor="Gray"/>
+								<Label Text="{Binding FireArea, StringFormat='{0:F2} %'}" FontSize="22" FontAttributes="Bold"/>
+							</VerticalStackLayout>
+
+							<VerticalStackLayout Grid.Row="0" Grid.Column="1">
+								<Label Text="Confidence YOLO" FontSize="12" TextColor="Gray"/>
+								<Label Text="{Binding YoloConfidence, StringFormat='{0:P1}'}" FontSize="22" FontAttributes="Bold"/>
+							</VerticalStackLayout>
+
+							<VerticalStackLayout Grid.Row="1" Grid.Column="0">
+								<Label Text="Indeks Bahaya (Fuzzy)" FontSize="12" TextColor="Gray"/>
+								<Label Text="{Binding FireDangerIndex, StringFormat='{0:F1} %'}" FontSize="22" FontAttributes="Bold" TextColor="#FF5722"/>
+							</VerticalStackLayout>
+
+							<VerticalStackLayout Grid.Row="1" Grid.Column="1">
+								<Label Text="Laju Penyebaran (MLP)" FontSize="12" TextColor="Gray"/>
+								<Label Text="{Binding EstimatedSpreadRate, StringFormat='{0:F2} Ha/Jam'}" FontSize="22" FontAttributes="Bold" TextColor="#E91E63"/>
+							</VerticalStackLayout>
+						</Grid>
+					</VerticalStackLayout>
+				</Border>
+
+				<Border StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="15" BackgroundColor="{AppThemeBinding Light=#FFF3E0, Dark=#2E1C0C}">
+					<VerticalStackLayout Spacing="10">
+						<Label Text="PELATIHAN KECERDASAN BUATAN LOKAL (MLP)" FontAttributes="Bold" FontSize="14" TextColor="#E65100"/>
+						<Label Text="{Binding TrainingStatus}" FontSize="12" TextColor="Gray"/>
+						<Button Text="Latih AI" Command="{Binding TrainAiCommand}" IsEnabled="{Binding IsNotBusy}" BackgroundColor="#FF9800" TextColor="White" HeightRequest="40" CornerRadius="8"/>
+					</VerticalStackLayout>
+				</Border>
+
+				<Border StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="15" BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B2E1C}">
+					<VerticalStackLayout Spacing="15">
+
+						<Grid ColumnDefinitions="*, Auto">
+							<Label Grid.Column="0" Text="ASISTEN PELAPORAN OTOMATIS (GEMINI AI)" FontAttributes="Bold" FontSize="14" TextColor="#2E7D32" VerticalOptions="Center"/>
+							<ActivityIndicator Grid.Column="1" IsRunning="{Binding IsNlpGenerating}" IsVisible="{Binding IsNlpGenerating}" HeightRequest="24" WidthRequest="24" Color="#2E7D32" VerticalOptions="Center"/>
+						</Grid>
+
+						<Button Text="Buat Siaran &amp; SITREP" Command="{Binding GenerateNlpManualCommand}" IsEnabled="{Binding IsNotBusy}" BackgroundColor="#4CAF50" TextColor="White" HeightRequest="40" CornerRadius="8"/>
+
+						<VerticalStackLayout Spacing="5">
+							<Label Text="Siaran Kepada Warga Setempat" FontAttributes="Bold" FontSize="12" TextColor="#388E3C"/>
+							<Border StrokeThickness="1" Padding="12" StrokeShape="RoundRectangle 5" BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}">
+								<Label Text="{Binding PublicReleaseText}" FontSize="13" TextColor="{AppThemeBinding Light=Black, Dark=White}" LineBreakMode="WordWrap"/>
+							</Border>
+						</VerticalStackLayout>
+
+						<VerticalStackLayout Spacing="5">
+							<Label Text="Draft SITREP Untuk Dinas BPBD / BNPB" FontAttributes="Bold" FontSize="12" TextColor="#1B5E20"/>
+							<Border StrokeThickness="1" Padding="12" StrokeShape="RoundRectangle 5" BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}">
+								<Label Text="{Binding SitrepReportText}" FontSize="13" TextColor="{AppThemeBinding Light=Black, Dark=White}" LineBreakMode="WordWrap" FontAttributes="Italic"/>
+							</Border>
+						</VerticalStackLayout>
+
+					</VerticalStackLayout>
+				</Border>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+	</Grid>
+</ContentPage>
