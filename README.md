@@ -52,15 +52,15 @@ Sistem terintegrasi ini dirancang dengan lima pilar fitur utama untuk menjaga ke
    * **SCRFD:** Deteksi wajah multi-skala berkecepatan tinggi langsung pada perangkat *edge*.
    * **MiniFASNet (Liveness Detection):** Proteksi berlapis terhadap serangan pemalsuan identitas atau *spoofing* seperti replika cetak foto maupun video interaktif.
    * **ArcFace:** Mengekstraksi fitur wajah menjadi representasi vektor 512-dimensi yang sangat diskriminatif untuk pembandingan identitas luring berakurasi tinggi.
-2. **Deteksi Visual Tepi Real-Time (YOLOv8 Local Inference):**
+2. **YOLOv8 Local Inference:**
    * Deteksi kontur api, kepulan asap, dan anomali termal berbasis model YOLOv8 lokal dalam format ONNX Runtime dengan latensi inferensi di bawah 19 ms.
-3. **Jembatan Penalaran Hibrida (Hybrid AI Reasoning Bridge):**
+3. **Hybrid AI Reasoning Bridge:**
    * **Logika Fuzzy Takagi-Sugeno Orde ke-0:** Menghasilkan Indeks Bahaya Kebakaran yang objektif secara *real-time* berdasarkan masukan sensor multi-parameter.
    * **Multi-Layer Perceptron (MLP):** Jaringan saraf tiruan lokal yang bertugas memproyeksikan laju perluasan area terdampak api (dalam skala hektar per jam).
-4. **Pelaporan Otomatis Bencana (LLM Automated Reporting System):**
+4. **LLM Automated Reporting System:**
    * Komunikasi asinkron non-blokir dengan API Google Gemini 2.5 Flash untuk mengonversi data telemetri mentah menjadi draf laporan formal tanggap bencana terstruktur.
-5. **Mekanisme SQLite Fallback:**
-   * Apabila jalur komunikasi jaringan nirkabel/satelit terputus, telemetri akan dialihkan secara otomatis ke basis data relasional SQLite lokal untuk mencegah hilangnya data log penting.
+5. **Penyimpanan Telemetri Lokal Terpusat (MySQL XAMPP):**
+   * ASeluruh data telemetri, log otentikasi operator, dan hasil prediksi analisis kebencanaan disimpan secara terus-menerus dan terpusat ke dalam basis data relasional MySQL (XAMPP) pada peladen lokal guna memastikan integritas data dan kontinuitas pelacakan luring secara waktu-nyata.
 
 ---
 
@@ -173,12 +173,12 @@ dotnet run --project src/FireMonitoringSystem.csproj --configuration Release
 | Parameter / Konfigurasi | Nilai Acuan | Deskripsi Operasional |
 |---|---|---|
 | **Target Latensi Inferensi** | < 19 ms | Batas waktu maksimum eksekusi YOLOv8 pada edge device |
-| **Model Deteksi Wajah** | SCRFD_2.5G_KPS[[6](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQE8O1xh2vzzEFMPH7_sqwPiJ-SX0sTF_RxW5nR1zFuNcX5TSgDNJxf_Y2CyWihTxWORqzHTyUQrC-AImy3XVuGm25KlV-0W9uXm2o91cC-LgbnWP8HLxIFyg-X9KN4T)] | Menghasilkan koordinat pembatas dan 5 titik penanda wajah[[1](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQFv1QvRG3hrOHbSCjpDHWMhixySEAXtdqKHSoTQd09BNIQm7kfGwkiUezhYcmjhO39SOXMeyXY3B8qkQGMlr-QyQ5EI8Qb5qBq8D76WF-AAlM4wL4oNkZdx-f_v2vOGLDtLJjLodkS_vjDZ6NhpJzgInchC3Mw3U-2G0VvMAj9cdSoerCyp8xttaPohluJmeCwLLQWSdCJBgNL8N5Vj6V_4MrD5xHzsXAttytie4Oglc_YYIg%3D%3D)][[7](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQEbDxQJAOsKwozeCdsGbR2SWbNC4MUxh9dEnUMPSBRvkbvxwCH8WF4AX6xipMEVEkw5Jfjhtxq8R672SOpBUqa6LxEJ9Hwd2yl7FR38oCuauTtjfPwEIgr_2VYWCfF0T0Vr0hvYhvWkb8esLXw8qERdIn7bTQ7mK50uYF2CggqznShszxYm0hPUs12Zq1r7nQEbdC00Vryt8tIr4k2uIGUpOYHcJcRXUjrDKivHC73IVJcAn0CGbjv2avmHJlLpkmzWhrWwLzO0dJhkktZv34scddD8tsU%3D)] |
+| **Model Deteksi Wajah** | SCRFD_2.5G_KPS | Menghasilkan koordinat pembatas dan 5 titik penanda wajah |
 | **Model Deteksi Pemalsuan** | MiniFASNet | Menganalisis keaslian wajah (Liveness Detection) secara lokal |
 | **Ambang Batas ArcFace** | Cosine Similarity $\ge$ 0.65 | Parameter penentu otorisasi operator terdaftar |
 | **Tipe Logika Fuzzy** | Takagi-Sugeno Orde ke-0 | Mengonversi masukan multisensor menjadi indeks bahaya 0-100% |
 | **Metode Estimasi Area** | Multi-Layer Perceptron | Prediksi laju ekspansi titik api dalam skala hektar/jam |
-| **Engine Penyimpanan Cadangan**| SQLite (Offline-First) | Buffer telemetri asinkron ketika jaringan internet terputus |
+| **Engine Penyimpanan**| MySQL | Menyimpan data auetikasi pengguna |
 
 ---
 
@@ -192,7 +192,7 @@ Hukum perlindungan kekayaan intelektual Republik Indonesia melindungi penuh selu
 *Dilarang keras menyalin, memodifikasi, mendistribusikan, atau mempergunakan kode sumber ini untuk kepentingan komersial tanpa izin tertulis dari pihak pemegang hak cipta dan Institut Teknologi Sepuluh Nopember (ITS).*
 
 ---
-<div align="center">
+<div align="center">  
 
 **Sistem Pemantauan Kebakaran Hutan dan Lahan Berbasis Kecerdasan Artifisial Tepi Hibrida**  
 *Inovasi Teknologi Instrumentasi untuk Keselamatan dan Pelestarian Lingkungan Indonesia.*
