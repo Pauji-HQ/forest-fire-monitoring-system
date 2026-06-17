@@ -19,7 +19,7 @@
 
 ---
 
-# 👨‍💻 Inventor / Pencipta
+# 👨‍💻 Pencipta
 
 Sistem ini dikembangkan dan didaftarkan sebagai Hak Kekayaan Intelektual (HKI) oleh tim inventor resmi berikut:
 
