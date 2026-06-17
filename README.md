@@ -68,13 +68,13 @@ Sistem terintegrasi ini dirancang dengan lima pilar fitur utama untuk menjaga ke
 
 Integrasi modul kecerdasan artifisial, pemrosesan sensor, serta pelaporan bencana digambarkan melalui diagram arsitektur di bawah ini:
 
-### 1. Diagram Kasus Penggunaan (Use Case Diagram)
+### 1. Use Case Diagram
 Menggambarkan interaksi aktor (operator lapangan dan sistem eksternal) dengan fungsi utama sistem keamanan dan pemantauan.
 
 ![Use Case Diagram](UML/use_case_diagram.png)
 
-### 2. Diagram Topologi Penyebaran (Deployment Diagram)
-Menunjukkan struktur infrastruktur fisik tempat perangkat lunak berjalan, mulai dari pemrosesan lokal (*edge processing*) hingga integrasi komputasi awan hibrida.
+### 2. Deployment Diagram
+Menunjukkan struktur infrastruktur fisik tempat perangkat lunak berjalan, mulai dari pemrosesan lokal atau *edge processing* hingga integrasi komputasi awan hibrida.
 
 ![Deployment Diagram](UML/deployment_diagram.png)
 
@@ -100,7 +100,7 @@ Visualisasi halaman verifikasi wajah dan pengelolaan operator pada aplikasi gerb
 
 ---
 
-# 🛠️ Prasyarat Sistem (Prerequisites)
+# 🛠️ Prasyarat Sistem 
 
 Sebelum melakukan kompilasi dan menjalankan sistem, pastikan lingkungan pengembangan Anda memenuhi kriteria berikut:
 
@@ -111,7 +111,7 @@ Sebelum melakukan kompilasi dan menjalankan sistem, pastikan lingkungan pengemba
   * JetBrains Rider atau Visual Studio Code dengan ekstensi C# Dev Kit.
 * **Runtime Dependencies:**
   * ONNX Runtime Native Libraries (untuk akselerasi GPU CUDA/DirectML pada inferensi YOLOv8, SCRFD, dan ArcFace).
-  * SQLite 3 Engine Core.
+  * XAMPP.
 
 ---
 
