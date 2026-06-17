@@ -48,9 +48,9 @@ Guna mendukung koordinasi bencana, telemetri tervalidasi dikirim secara asinkron
 
 Sistem terintegrasi ini dirancang dengan lima pilar fitur utama untuk menjaga keandalan operasi di area terpencil:
 
-1. **Otentikasi Biometrik Tepi Luring (Offline Edge Biometric Gateway):**
+1. **Offline Edge Biometric Gateway:**
    * **SCRFD:** Deteksi wajah multi-skala berkecepatan tinggi langsung pada perangkat *edge*.
-   * **MiniFASNet (Liveness Detection):** Proteksi berlapis terhadap serangan pemalsuan identitas (*spoofing*) seperti replika cetak foto maupun video interaktif.
+   * **MiniFASNet (Liveness Detection):** Proteksi berlapis terhadap serangan pemalsuan identitas atau *spoofing* seperti replika cetak foto maupun video interaktif.
    * **ArcFace:** Mengekstraksi fitur wajah menjadi representasi vektor 512-dimensi yang sangat diskriminatif untuk pembandingan identitas luring berakurasi tinggi.
 2. **Deteksi Visual Tepi Real-Time (YOLOv8 Local Inference):**
    * Deteksi kontur api, kepulan asap, dan anomali termal berbasis model YOLOv8 lokal dalam format ONNX Runtime dengan latensi inferensi di bawah 19 ms.
