@@ -2,7 +2,7 @@
 
 # SISTEM DAN METODE PEMANTAUAN KEBAKARAN BERBASIS KECERDASAN ARTIFISIAL TEPI HIBRIDA DENGAN GERBANG BIOMETRIK
 
-### Implementasi Sistem Cerdas Terdistribusi Menggunakan .NET 9 untuk Pemantauan Multi-Faktor dan Deteksi Dini Luring
+### Implementasi Sistem Cerdas Terdistribusi Menggunakan .NET Maui untuk Pemantauan Multi-Faktor dan Deteksi Dini Kebakaran
 
 <br>
 
