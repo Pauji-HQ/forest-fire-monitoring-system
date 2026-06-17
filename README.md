@@ -133,7 +133,7 @@ namespace FireMonitoringSystem.Config
     public static class ApiConfig
     {
         // Kunci API untuk otentikasi layanan Google Gemini LLM
-        public const string GeminiApiKey = "MASUKKAN_API_KEY_GEMINI_ANDA";
+        public const string GeminiApiKey = "API_KEY";
 
         // Jalur koneksi basis data SQLite lokal untuk mekanisme fallback
         public const string SqliteConnectionString = "Data Source=LocalDatabase/telemetry_fallback.db;Cache=Shared";
