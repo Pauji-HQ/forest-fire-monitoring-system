@@ -23,10 +23,10 @@
 
 Sistem ini dikembangkan dan didaftarkan sebagai Hak Kekayaan Intelektual (HKI) oleh tim inventor resmi berikut:
 
-| Nama Inventor | Afiliasi / Institusi | Peran |
+| Nama Pencipta | Institusi | Peran |
 |---|---|---|
-| **Ahmad Fauzi Abdul Razzaq** | Institut Teknologi Sepuluh Nopember (ITS) | Pencipta Utama / Pengembang Perangkat Lunak |
-| **Ir. Dwi Oktavianto Wahyu Nugroho, S.T., M.T.** | Institut Teknologi Sepuluh Nopember (ITS) | Dosen Pembimbing / Pencipta Pendamping |
+| **Ahmad Fauzi Abdul Razzaq** | Institut Teknologi Sepuluh Nopember (ITS) | Pengembang Perangkat Lunak |
+| **Ir. Dwi Oktavianto Wahyu Nugroho, S.T., M.T.** | Institut Teknologi Sepuluh Nopember (ITS) | Dosen Pembimbing |
 
 **Departemen Teknik Instrumentasi**  
 **Fakultas Teknologi Industri dan Rekayasa Sistem (FTIRS)**  
