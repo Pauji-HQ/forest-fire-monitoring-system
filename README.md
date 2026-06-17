@@ -8,7 +8,7 @@
 
 <img src="https://img.shields.io/badge/Platform-.NET%209-purple?style=for-the-badge&logo=.net">
 <img src="https://img.shields.io/badge/Language-C%23-blue?style=for-the-badge&logo=c-sharp">
-<img src="https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge&logo=sqlite">
+<img src="https://img.shields.io/badge/Database-MySQL%20(XAMPP)-4479A1?style=for-the-badge&logo=mysql">
 <img src="https://img.shields.io/badge/AI--Engine-YOLOv8%20%26%20ONNX-green?style=for-the-badge">
 <img src="https://img.shields.io/badge/LLM-Gemini%202.5%20Flash-red?style=for-the-badge&logo=google-gemini">
 <img src="https://img.shields.io/badge/Status-HKI%20Registered-success?style=for-the-badge">
