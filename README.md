@@ -29,7 +29,7 @@ Sistem ini dikembangkan dan didaftarkan sebagai Hak Kekayaan Intelektual (HKI) o
 | **Ir. Dwi Oktavianto Wahyu Nugroho, S.T., M.T.** | Institut Teknologi Sepuluh Nopember (ITS) | Dosen Pembimbing |
 
 **Departemen Teknik Instrumentasi**  
-**Fakultas Teknologi Industri dan Rekayasa Sistem (FTIRS)**  
+**Fakultas Vokasi (FV)**  
 **Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia**
 
 ---
